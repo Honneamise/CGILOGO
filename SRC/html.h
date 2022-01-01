@@ -70,20 +70,6 @@
                     </p>\n"
 
 
-#define HTML_FORM_SHARE "<form method=\"post\" action=\"share.bin\" >\
-                        <input type=\"hidden\" name=\"code\" value=\"%s\">\
-                        <input type=\"submit\" value=\"SHARE\">\
-                        </form>\n"
-
-#define HTML_FORM_SHARE_VALIDATE "<form method=\"post\" action=\"share.bin\" >\
-                                Name <input type=\"text\" name=\"name\" minlength=\"3\" required>\
-                                Mail <input type=\"email\" name=\"mail\" minlength=\"3\" required>\
-                                <input type=\"hidden\" name=\"code\" value=\"%s\">\
-                                <input type=\"submit\" value=\"SHARE\">\
-                                <br><br>\
-                                <textarea readonly disabled name=\"code\" rows=\"20\" cols=\"80\" maxlength=\"500\">%s</textarea>\
-                                </form>\n"
-
 char *HTML_post();
 
 void HTML_unencode(char *str);

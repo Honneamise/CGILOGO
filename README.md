@@ -26,4 +26,4 @@ The code can be of max 500 characters, including blanks.
 \
 \
 \
-Rif. UCB LOGO ( https://en.wikipedia.org/wiki/UCBLogo ) 
+Rif. UCB Logo ( https://en.wikipedia.org/wiki/UCBLogo ) 
