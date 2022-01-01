@@ -1,6 +1,4 @@
 # CGILOGO
-A simple CGI Logo language interpreter written in C
-
 
 ![image](image.png)
 
