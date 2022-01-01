@@ -26,7 +26,10 @@
                     \
                     form { padding : 10px; }\
                     \
-                    textarea { resize: none; }"
+                    textarea { resize: none; }\
+                    \
+                    a { color : #000000;\
+                    text-decoration : none; }"
 
 #define HTML_HEADER "Content-type: text/html\n\n\
                     <!DOCTYPE html>\
@@ -38,6 +41,8 @@
                     <body>\n"
 
 #define HTML_FOOTER "</body></html>\n"
+
+#define HTML_LINK_SOURCE "<a href=\"https://github.com/Honneamise/CGILOGO\">https://github.com/Honneamise/CGILOGO</a>"
 
 #define HTML_FORM_CODE "<form method=\"post\" action=\"logo.bin\" >\
                     <textarea name=\"code\" rows=\"15\" cols=\"65\" maxlength=\"500\">%s</textarea>\

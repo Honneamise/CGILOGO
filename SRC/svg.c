@@ -3,21 +3,28 @@
 #include "stdlib.h"
 #include "string.h"
 #include "ctype.h"
+#include "limits.h"
+#include "errno.h"
 
 //stuff
 #include "svg.h"
 
-/**********/
+
 static int TOKEN_isint(char *token)
 {
     if(!token) { return 0; }
 
-    int len = strlen(token);
+    char *end = NULL;
 
-    for(int i=0;i<len;i++)
-    {
-        if(!isdigit(token[i])) { return 0; }
-    }
+    long val = strtol(token, &end, 10);
+
+    errno = 0;
+
+    if(*end!=0){ return 0; }
+    
+    if( (val==LONG_MAX || val==LONG_MIN) && errno==ERANGE ){ return 0; }
+
+	if( val>INT_MAX || val<INT_MIN ) { return 0; }
 
     return 1;
 }
@@ -120,7 +127,7 @@ void SVG_line(float srcx, float srcy, float dstx, float dsty, char *color)
 char *SVG_render(SVG *svg, char *code)
 {
     if(!svg || !code) { return SVG_error(SVG_ERR_RENDER,NULL); }
-    
+
     char *delimiters = " \f\n\r\t\v";
 
     char *save = NULL;
@@ -140,7 +147,7 @@ char *SVG_render(SVG *svg, char *code)
         {
             token = strtok_r(NULL, delimiters, &save);
 
-            if(token!=NULL && TOKEN_isint(token))
+            if(TOKEN_isint(token))
             {
                 int num = atoi(token);
 
@@ -161,7 +168,7 @@ char *SVG_render(SVG *svg, char *code)
         {
             token = strtok_r(NULL, delimiters, &save);
 
-            if(token!=NULL && TOKEN_isint(token))
+            if(TOKEN_isint(token))
             {
                 int num = atoi(token);
 
@@ -175,7 +182,7 @@ char *SVG_render(SVG *svg, char *code)
         {
             token = strtok_r(NULL, delimiters, &save);
 
-            if(token!=NULL && TOKEN_isint(token))
+            if(TOKEN_isint(token))
             {
                 int num = atoi(token);
                 
@@ -200,11 +207,11 @@ char *SVG_render(SVG *svg, char *code)
             int y = 0;
 
             token = strtok_r(NULL, delimiters, &save);
-            if(token!=NULL && TOKEN_isint(token)) { x = atoi(token);}
+            if(TOKEN_isint(token)) { x = atoi(token);}
             else { return SVG_error(SVG_ERR_INT,token); }
 
             token = strtok_r(NULL, delimiters, &save);
-            if(token!=NULL && TOKEN_isint(token)) { y = atoi(token);}
+            if(TOKEN_isint(token)) { y = atoi(token);}
             else { return SVG_error(SVG_ERR_INT,token); }
 
             if(svg->pen){ SVG_line(svg->pos.x, svg->pos.y, x, y, svg->color); }
@@ -238,11 +245,11 @@ char *SVG_render(SVG *svg, char *code)
         {
             int num = 0;
             token = strtok_r(NULL, delimiters, &save);
-            if(token!=NULL && TOKEN_isint(token)) { num = atoi(token);}
+            if(TOKEN_isint(token)) { num = atoi(token);}
             else { return SVG_error(SVG_ERR_INT,token); }
 
             token = strtok_r(NULL, delimiters, &save);
-            if(token!=NULL && TOKEN_isleft(token)) 
+            if(TOKEN_isleft(token)) 
             { 
                 char _code[LEN_512] = {0};
 

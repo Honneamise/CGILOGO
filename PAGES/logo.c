@@ -10,10 +10,12 @@
 //main
 int main(int argc, char **argv)  
 {
-    printf(HTML_HEADER,"CGI LOGO INTERPRETER");
+	printf(HTML_HEADER,"CGI LOGO INTERPRETER");
 
-	printf("<h1>CGI LOGO INTERPRETER</h1><br>");
+	printf("<h1>CGI LOGO INTERPRETER</h1>");
 	
+	printf(HTML_LINK_SOURCE "<br><br>");
+
 	SVG svg = SVG_init(DEFAULT_SVG_W,DEFAULT_SVG_H);
 
 	char *post = HTML_post();
