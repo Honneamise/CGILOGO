@@ -72,6 +72,8 @@
 
 char *HTML_post();
 
+char *HTML_get();
+
 void HTML_unencode(char *str);
 
 char *HTML_field(char *str, char *field);

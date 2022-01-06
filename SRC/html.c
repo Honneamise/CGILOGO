@@ -32,6 +32,25 @@ char *HTML_post()
 }
 
 /**********/
+char *HTML_get()
+{
+    char *method = getenv("REQUEST_METHOD");
+
+    if(method==NULL || strcmp(method,"GET")!=0) { return NULL; }
+
+    char *get = getenv("QUERY_STRING");
+
+    if(get==NULL || strlen(get)<1) { return NULL; }
+    
+    char *_get = calloc(strlen(get)+1,sizeof(char));
+
+    strcpy(_get,get);
+    
+    return _get;
+}
+
+
+/**********/
 void HTML_unencode(char *str)
 {
     if(!str){ return; };
