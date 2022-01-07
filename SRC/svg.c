@@ -128,7 +128,7 @@ void SVG_end()
 /**********/
 void SVG_line(float srcx, float srcy, float dstx, float dsty, char *color)
 {
-    printf("<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"%s\"/>\n",
+    printf("<line x1=\"%.2f\" y1=\"%.2f\" x2=\"%.2f\" y2=\"%.2f\" stroke=\"%s\"/>\n",
     srcx,
     srcy,
     dstx,
