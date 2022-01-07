@@ -9,6 +9,19 @@
 //stuff
 #include "svg.h"
 
+//define
+#define LEN_256     256
+#define LEN_512     512
+
+#define SVG_TIMEOUT     1.0f//in seconds
+
+#define SVG_ERR_INT     "Expected INT"
+#define SVG_ERR_RGB     "Missing or malformed RGB"
+#define SVG_ERR_RIGHT   "Missing right paren"
+#define SVG_ERR_LEFT    "Missing left paren"
+#define SVG_ERR_TOKEN   "Invalid token"
+#define SVG_ERR_RENDER  "Render error"
+#define SVG_ERR_TIMEOUT "Timed out"
 
 static int TOKEN_isint(char *token)
 {

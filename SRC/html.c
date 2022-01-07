@@ -3,8 +3,8 @@
 #include "stdlib.h"
 #include "string.h"
 
-//stuff 
-#include "html.h"
+//define
+#define LEN_512     512
 
 /**********/
 char *HTML_post()
